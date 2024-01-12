@@ -11,3 +11,7 @@ urlpatterns = [
     #path("<int:pk>/results/", views.ResultsView.as_view(), name="results"),
     #path("<int:question_id>/vote/", views.vote, name="vote"),
 ]
+
+'''
+https://www.pythontutorial.net/django-tutorial/django-login/
+'''
