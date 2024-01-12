@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', lambda req: redirect('/homepage/')),
     path('homepage/', include('homepage.urls')),
+    path('', include('users.urls')),
 ]
