@@ -1,8 +1,13 @@
 {% load static %}
 
-<div><link rel="stylesheet" href="{% static 'homepage/homepage_style.css' %}" /></div>
+<div>
+  <link rel="stylesheet" href="{% static 'homepage/homepage_style.css' %}" />
+</div>
 
 <head>
-<title> Welcome Page</title>
+  <a class="topnav">
+    <title class="welcome">Welcome Page</title>
     Hello World!
+  </a>
+  <a class="login" href="/mysite/users/templates/users/loginpage.html">Login</a>
 </head>
