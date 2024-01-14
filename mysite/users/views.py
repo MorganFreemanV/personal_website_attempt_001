@@ -16,4 +16,11 @@ def sign_in(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = authenticate(request,)
+            user = authenticate(request, username=username, password=password)
+            if user:
+                login(request, user)
+                messages.success(request, f'Hi, {username.title()}, welcome back.')
+                return redirect('posts')
+        
+        messages.error(request, f'Wrong username or password!')
+        return render(request, 'users/login.html', {'form':form})
