@@ -1,16 +1,12 @@
-.topnav {
-  background-color: yellow;
-  overflow: hidden;
-}
-
-.topnav welcome {
+.welcome {
   float: left;
-  color: aqua;
+  display: block;
+  color: lightsteelblue;
   text-align: center;
   width: fit-content;
 }
 
-.topnav login {
+.login {
   float: right;
   color: red;
   text-align: center;
@@ -21,13 +17,11 @@
 } */
 
 body {
-  /*colour of text*/
-  /* color: white; */
-  /* colour of image */
-  background: white
-    url("https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg")
-    no-repeat;
-  background-position: center;
+  background: darkblue;
+  .eiffel {
+    background-position: center;
+  }
+  /* background-position: center bottom; */
 }
 
 /* body {

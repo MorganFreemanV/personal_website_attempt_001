@@ -23,4 +23,10 @@ def sign_in(request):
                 return redirect('posts')
         
         messages.error(request, f'Wrong username or password!')
-        return render(request, 'users/login.html', {'form':form})
+        return render(request, 'users/loginpage.html', {'form':form})
+    
+'''
+def signout(request):
+    if request.method == 'GET':
+        
+'''

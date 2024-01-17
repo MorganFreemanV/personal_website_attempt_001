@@ -1,6 +1,9 @@
 {% load static %}
 
+{% block content%}
 <div><link rel="stylesheet" href="{% static 'users/loginpage.css' %}" /></div>
+
+<title>Test.com | Login</title>
 
 <form method="post" novalidate>
     {%csrf_token%}
@@ -8,3 +11,5 @@
     {{form.as_p}}
     <input type="submit" value="Login"/>
 </form>
+
+{% endblock content %}
