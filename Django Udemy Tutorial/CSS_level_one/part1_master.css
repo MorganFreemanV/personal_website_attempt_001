@@ -1,0 +1,16 @@
+.firstdiv {
+  color: red;
+}
+
+div {
+  color: blue;
+}
+
+#singledout {
+  color: green;
+  text-decoration: underline;
+}
+
+li a {
+  color: red;
+}
