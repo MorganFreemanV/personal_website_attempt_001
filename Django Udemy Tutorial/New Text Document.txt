@@ -1,2 +1,1 @@
-https://learncsc.udemy.com/course/python-and-django-full-stack-web-developer-bootcamp/learn/lecture/6550302#overview
-
+https://learncsc.udemy.com/course/python-and-django-full-stack-web-developer-bootcamp/learn/lecture/6550510?start=75#overview
