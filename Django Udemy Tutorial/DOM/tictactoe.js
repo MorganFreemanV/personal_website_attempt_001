@@ -2,6 +2,8 @@ var restart_game = document.querySelector("#restartbtn");
 
 var squares = document.querySelectorAll("td");
 
+var cur_turn = "";
+
 restart_game.addEventListener('click', restartgame);
 
 for (var i = 0; i < squares.length; i++) {
@@ -11,15 +13,16 @@ for (var i = 0; i < squares.length; i++) {
 function restartgame() {
     for (var i = 0; i < squares.length; i++) {
         squares[i].textContent = '';
+        cur_turn = '';
     }
 }
 
 function changecontent() {
-    if (this.textContent === '') {
+    if (cur_turn === '' ||  cur_turn === 'O') {
         this.textContent = 'X';
-    } else if (this.textContent === "X") {
+        cur_turn = 'X';
+    } else if (cur_turn === "X") {
         this.textContent = "O";
-    } else {
-        this.textContent = "";
+        cur_turn = "O";
     }
 }
