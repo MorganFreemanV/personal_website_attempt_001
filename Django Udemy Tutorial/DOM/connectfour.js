@@ -1,27 +1,24 @@
-var current_color = "";
-var height = document.querySelectorAll("tr");
-var widths = document.querySelectorAll(".circle");
+var player1 = prompt("What is your name? You will be blue");
+$("#player1").attr("id", player1);
+var player1color = "blue";
+var player2 = prompt("What is your name? You will be red");
+var player2color = "red";
+$("#player2").attr("id", player2);
 var turn = 1;
 
-for (var j = 0; j < widths.length; j++) {
-  for (var i = 0; i < widths.length; i++) {
-    widths[i].addEventListener("click", changecontent);
-  }
-}
+$("button").on("click", function () {
+  var col = $(this).closest("td").index();
+  var row = $(this).closest("tr").index();
+  var curplayer = checkplayer();
+  // function to check player
+  // function to check row  to drop down to
+  // function to check connectfour
+  // function to check wincon
+  console.log("col number is: " + col);
+  console.log("row number is: " + row);
+});
 
-function changecontent() {
-  rowind = this.closest("tr").rowIndex;
-  colind = this.parentElement.cellIndex;
-  for (var i = 6; i > -1; i--) {
-    placeholder = document.getElementById("tr").rows[rowind].cells[colind];
-    console.log(placeholder);
-    if (widths[rowind][colind].style.backgroundColor === "bisque") {
-      if (turn === 1) {
-        this.style.backgroundColor = "blue";
-      } else {
-        this.style.backgroundColor = "red";
-      }
-    }
-    turn = turn * -1;
-  }
+function checkplayer() {
+  if (turn === 1) return player1;
+  else return player2;
 }
