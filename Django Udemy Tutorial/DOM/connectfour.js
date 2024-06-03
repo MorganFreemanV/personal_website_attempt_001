@@ -78,30 +78,72 @@ function checkhorizontal() {
         .eq(col)
         .find("button")
         .css("background-color");
-      console.log(row + ", " + col + " " + color_placeholder);
+      /*       console.log(row + ", " + col + " " + color_placeholder); */
       if (col === 0) {
         curcolor = color_placeholder;
         count = count + 1;
-        console.log(
+        /*         console.log(
           "initialise: cur background colour: " +
             curcolor +
             " current count: " +
             count
-        );
+        ); */
       } else if (
         color_placeholder === curcolor &&
         curcolor !== "rgb(255, 228, 196)"
       ) {
         count = count + 1;
-        console.log("count increased to " + count);
-        console.log(color_placeholder + " " + curcolor);
+        /*         console.log("count increased to " + count);
+        console.log(color_placeholder + " " + curcolor); */
       } else {
         count = 1;
         curcolor = color_placeholder;
-        console.log("reset");
+        /*         console.log("reset"); */
       }
       if (count >= 4) {
-        console.log(curcolor + " win!");
+        /*         console.log(curcolor + " win!"); */
+        reportwin(curcolor);
+      }
+    }
+    count = 0;
+  }
+}
+
+function checkvertical() {
+  var count = 0;
+  var curcolor = "";
+  for (var col = 0; row < 6; col++) {
+    for (var row = 0; row < 7; row++) {
+      var color_placeholder = table
+        .eq(row)
+        .find("td")
+        .eq(col)
+        .find("button")
+        .css("background-color");
+      /*       console.log(row + ", " + col + " " + color_placeholder); */
+      if (row === 0) {
+        curcolor = color_placeholder;
+        count = count + 1;
+        /*         console.log(
+          "initialise: cur background colour: " +
+            curcolor +
+            " current count: " +
+            count
+        ); */
+      } else if (
+        color_placeholder === curcolor &&
+        curcolor !== "rgb(255, 228, 196)"
+      ) {
+        count = count + 1;
+        /*         console.log("count increased to " + count);
+        console.log(color_placeholder + " " + curcolor); */
+      } else {
+        count = 1;
+        curcolor = color_placeholder;
+        /*         console.log("reset"); */
+      }
+      if (count >= 4) {
+        /*         console.log(curcolor + " win!"); */
         reportwin(curcolor);
       }
     }
@@ -115,4 +157,9 @@ function reportwin(curcolor) {
   } else {
     alert($("#player2").text() + " wins!");
   }
+  restartgame();
+}
+
+function restartgame() {
+  document.location.reload();
 }

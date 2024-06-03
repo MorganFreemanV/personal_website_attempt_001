@@ -13,10 +13,12 @@
       }
       .container {
         display: flex;
+        width: 100%;
         padding-top: 10px;
+        justify-content: space-between;
       }
       .column {
-        flex: 33.33%;
+        flex: auto;
         text-align: center;
       }
       table {
@@ -26,8 +28,8 @@
       }
       td {
         background-color: lightcoral;
-        height: 100px;
-        width: 100px;
+        height: 80px;
+        width: 80px;
         font-size: 100px;
         text-align: center;
         border: 2px solid black;
@@ -54,12 +56,12 @@
       <div class="jumbotron">
         <h1 class="header1">Welcome to my Connect Four game!</h1>
         <hr class="my-4" />
-        <p>Built using HTML, JS and jQuery</p>
+        <p>Built using pure HTML, CSS, JS and jQuery</p>
       </div>
     </div>
     <div class="container">
       <div class="column" id="player1">Player 1</div>
-      <div class="column">
+      <div class="column" id="gamespace">
         <table align="center">
           <tr>
             <td><button></button></td>
