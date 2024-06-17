@@ -30,12 +30,12 @@ $("button").on("click", function () {
 
   // function to drop down color
   addrow(row, col, curplayercolor);
-  turn = turn * -1;
 
   // function to check if connected four
-  checkhorizontal();
-  /* var wincount = Math.max(checkhorizontal(), checkvertical(), checkdiagonal()); */
-  // function to check wincon
+  if (checkhorizontal() || checkvertical() || checkdiagonal()) {
+    restartgame();
+  }
+  turn = turn * -1;
 });
 
 function checkplayer() {
@@ -66,98 +66,108 @@ function addrow(row, col, curplayercolor) {
     .css("background-color", curplayercolor);
 }
 
-// long version
+function returncolor(row, col) {
+  return table
+    .eq(row)
+    .find("td")
+    .eq(col)
+    .find("button")
+    .css("background-color");
+}
+
+function colormatchcheck(one, two, three, four) {
+  return (
+    one === two &&
+    one === three &&
+    one === four &&
+    one != "rgb(255, 228, 196)" &&
+    one != undefined
+  );
+}
+
+// check horizontal wins
 function checkhorizontal() {
-  var count = 0;
-  var curcolor = "";
   for (var row = 0; row < 7; row++) {
     for (var col = 0; col < 6; col++) {
-      var color_placeholder = table
-        .eq(row)
-        .find("td")
-        .eq(col)
-        .find("button")
-        .css("background-color");
-      /*       console.log(row + ", " + col + " " + color_placeholder); */
-      if (col === 0) {
-        curcolor = color_placeholder;
-        count = count + 1;
-        /*         console.log(
-          "initialise: cur background colour: " +
-            curcolor +
-            " current count: " +
-            count
-        ); */
-      } else if (
-        color_placeholder === curcolor &&
-        curcolor !== "rgb(255, 228, 196)"
+      if (
+        colormatchcheck(
+          returncolor(row, col),
+          returncolor(row, col + 1),
+          returncolor(row, col + 2),
+          returncolor(row, col + 3)
+        )
       ) {
-        count = count + 1;
-        /*         console.log("count increased to " + count);
-        console.log(color_placeholder + " " + curcolor); */
+        reportwin(turn);
+        return true;
       } else {
-        count = 1;
-        curcolor = color_placeholder;
-        /*         console.log("reset"); */
-      }
-      if (count >= 4) {
-        /*         console.log(curcolor + " win!"); */
-        reportwin(curcolor);
+        continue;
       }
     }
-    count = 0;
   }
 }
 
+// check vertical wins
 function checkvertical() {
-  var count = 0;
-  var curcolor = "";
-  for (var col = 0; row < 6; col++) {
+  for (var col = 0; col < 6; col++) {
     for (var row = 0; row < 7; row++) {
-      var color_placeholder = table
-        .eq(row)
-        .find("td")
-        .eq(col)
-        .find("button")
-        .css("background-color");
-      /*       console.log(row + ", " + col + " " + color_placeholder); */
-      if (row === 0) {
-        curcolor = color_placeholder;
-        count = count + 1;
-        /*         console.log(
-          "initialise: cur background colour: " +
-            curcolor +
-            " current count: " +
-            count
-        ); */
-      } else if (
-        color_placeholder === curcolor &&
-        curcolor !== "rgb(255, 228, 196)"
+      if (
+        colormatchcheck(
+          returncolor(row, col),
+          returncolor(row + 1, col),
+          returncolor(row + 2, col),
+          returncolor(row + 3, col)
+        )
       ) {
-        count = count + 1;
-        /*         console.log("count increased to " + count);
-        console.log(color_placeholder + " " + curcolor); */
+        reportwin(turn);
+        return true;
       } else {
-        count = 1;
-        curcolor = color_placeholder;
-        /*         console.log("reset"); */
-      }
-      if (count >= 4) {
-        /*         console.log(curcolor + " win!"); */
-        reportwin(curcolor);
+        continue;
       }
     }
-    count = 0;
   }
 }
 
-function reportwin(curcolor) {
-  if (curcolor === player1color) {
+function checkdiagonal() {
+  for (var col = 0; col < 6; col++) {
+    for (var row = 0; row < 7; row++) {
+      if (
+        colormatchcheck(
+          returncolor(row, col),
+          returncolor(row + 1, col + 1),
+          returncolor(row + 2, col + 2),
+          returncolor(row + 3, col + 3)
+        )
+      ) {
+        reportwin(turn);
+        return true;
+      } else if (
+        colormatchcheck(
+          returncolor(row, col),
+          returncolor(row - 1, col + 1),
+          returncolor(row - 2, col + 2),
+          returncolor(row - 3, col + 3)
+        )
+      ) {
+        reportwin(turn);
+        return true;
+      } else {
+        continue;
+      }
+    }
+  }
+}
+
+/* function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+} */
+
+function reportwin(turn) {
+  if (turn === 1) {
     alert($("#player1").text() + " wins!");
   } else {
     alert($("#player2").text() + " wins!");
   }
-  restartgame();
+  // restartgame();
 }
 
 function restartgame() {
