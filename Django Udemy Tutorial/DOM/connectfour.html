@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+        background-color: darkolivegreen;
+      }
+      .jumbotron {
+        background-color: bisque;
+        /*mix-blend-mode: difference;
+        filter: invert(1); */
+        margin: 0px 10px 0px 10px;
+      }
+      .container {
+        display: flex;
+        width: 100%;
+        padding-top: 10px;
+        justify-content: space-between;
+      }
+      .column {
+        flex: auto;
+        text-align: center;
+      }
+      table {
+        border-spacing: "0";
+        margin-top: 10px;
+        border-collapse: collapse;
+      }
+      td {
+        background-color: lightcoral;
+        height: 80px;
+        width: 80px;
+        font-size: 100px;
+        text-align: center;
+        border: 2px solid black;
+      }
+      tr button {
+        background-color: bisque;
+        display: block;
+        height: 60%;
+        width: 60%;
+        border-radius: 50%;
+        border: 3px solid #000;
+        margin: auto;
+        color: #fff;
+        line-height: 50px;
+        text-align: center;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connect Four Game</title>
+  </head>
+  <body>
+    <div class="col-12 col-md-3 col-xl-2">
+      <div class="jumbotron">
+        <h1 class="header1">Welcome to my Connect Four game!</h1>
+        <hr class="my-4" />
+        <p>Built using pure HTML, CSS, JS and jQuery</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="column" id="player1">Player 1</div>
+      <div class="column" id="gamespace">
+        <table align="center">
+          <tr>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+          </tr>
+          <tr>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+          </tr>
+          <tr>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+          </tr>
+          <tr>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+          </tr>
+          <tr>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+          </tr>
+          <tr>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+          </tr>
+          <tr>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+          </tr>
+        </table>
+      </div>
+      <div class="column" id="player2">Player 2</div>
+    </div>
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"
+  ></script>
+  <script src="connectfour.js"></script>
+</html>
