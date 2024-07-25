@@ -40,13 +40,12 @@ class Deck:
     have a method for splitting/cutting the deck in half and Shuffling the deck.
     """
     def __init__(self) -> None:
-        print('Creating deck...')
+        #print('Creating deck...')
         self.allcards = [(s,r) for s in SUITE for r in RANKS]
-        print(self.allcards)
-        
+        #print(self.allcards)
 
     def shuffle(self):
-        print('Shuffling deck...')
+        #print('Shuffling deck...')
         shuffle(self.allcards)
     
     def split_cards(self):
@@ -80,15 +79,18 @@ class Player:
 
     def play_card(self):
         drawn_card = self.hand.removecard()
-        print('{} has played {}'.format(self.name, drawn_card))
-        print('\n')
+        #print('{} has played {}'.format(self.name, drawn_card))
+        #print('\n')
         return drawn_card
     
     def remove_war_cards(self):
         warcards = []
-        for x in range(3):
-            warcards.append(self.hand.removecard())
-        return warcards
+        if len(self.hand.cards) < 3:
+            return warcards
+        else:
+            for x in range(3):
+                warcards.append(self.hand.removecard())
+            return warcards
     
     def still_has_cards(self):
         '''
@@ -100,18 +102,16 @@ class Player:
 ######################
 #### GAME PLAY #######
 ######################
-print("Welcome to War, let's begin...")
+#print("Welcome to War, let's begin...")
 
 # Use the 3 classes along with some logic to play a game of war!
 d = Deck()
 d.shuffle()
 half1, half2 = d.split_cards()
-""" print(half1)
-print()
-print(half2) """
 
 comp = Player('Computer', Hand(half1))
-player = input('What is your name?')
+#player = input('What is your name?')
+player = 'PLAYER1'
 player = Player(player, Hand(half2))
 
 total_rounds = 0
@@ -119,6 +119,36 @@ war_count = 0
 
 while player.still_has_cards() and comp.still_has_cards():
     total_rounds += 1
-    print('Time for new round!')
-    print('Here are the current standings.')
-    print(player.name + ' has the count: ' + str(len(player.hand.cards)))
+    #print('Time for new round!')
+    #print('Here are the current standings.')
+    #print(player.name + ' has the count: ' + str(len(player.hand.cards)))
+    #print(comp.name + ' has the count: ' + str(len(comp.hand.cards)))
+    tablecards = []
+    pcard, ccard = player.play_card(), comp.play_card()
+    tablecards.append(pcard)
+    tablecards.append(ccard)
+    if RANKS.index(pcard[1]) == RANKS.index(ccard[1]):
+        war_count += 1
+        #print('We have a War!')
+        #print("Each player removes 3 cards 'face down' and then one card face up")
+        tablecards.extend(player.remove_war_cards())
+        tablecards.extend(comp.remove_war_cards())
+        if player.still_has_cards() and comp.still_has_cards():
+            pcard, ccard = player.play_card(), comp.play_card()
+        else:
+            break
+        tablecards.append(pcard)
+        tablecards.append(ccard)
+        if RANKS.index(pcard[1]) < RANKS.index(ccard[1]):
+            #print(player.name+" has the higher card, adding to hand.")
+            player.hand.addcard(tablecards)
+        else:
+            #print(comp.name+" has the higher card, adding to hand.")
+            comp.hand.addcard(tablecards)
+    elif RANKS.index(pcard[1]) < RANKS.index(ccard[1]):
+        #print(player.name+" has the higher card, adding to hand.")
+        player.hand.addcard(tablecards)
+    else:
+        #print(comp.name+" has the higher card, adding to hand.")
+        comp.hand.addcard(tablecards)
+print('Great game. Total Wars = {}, Total rounds = {}'.format(str(war_count), str(total_rounds)))

@@ -106,7 +106,8 @@ half1,half2 = d.split_in_half()
 
 # Create Both Players
 comp = Player("computer",Hand(half1))
-name = input("What is your name player? ")
+#name = input("What is your name player? ")
+name = 'PLAYER1'
 user = Player(name,Hand(half2))
 
 # Set Round Count
