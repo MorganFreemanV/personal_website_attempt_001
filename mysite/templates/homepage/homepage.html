@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First App</title>
+    <link rel="stylesheet" href="{% static 'homepage/css/homepage.css' %}" />
+  </head>
+  <body>
+    <h1>Hello world!</h1>
+    <p>This is my first attempt</p>
+    <img src="{% static 'homepage/images/flower.jpg' %}" />
+    <!-- the below is a template tag, to be used to insert data in python files -->
+    <div></div>
+    {{ insert_me }}
+  </body>
+</html>

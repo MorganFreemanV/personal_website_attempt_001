@@ -32,6 +32,9 @@ $ for end of text
 '''
 
 urlpatterns = [
-    re_path(r'^$',views.homepage_helloworld, name='homepage_helloworld'),
+    re_path(r'homepage/', include('homepage.urls')),
+    re_path(r'^$', include('homepage.urls')),
+    
+    # re_path(r'^$',views.homepage_helloworld, name='homepage_helloworld'),
     path('admin/', admin.site.urls),
 ]
