@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 {% load static %}
 <html lang="en">
   <head>
@@ -11,8 +11,39 @@
     <h1>Hello world!</h1>
     <p>This is my first attempt</p>
     <img src="{% static 'homepage/images/flower.jpg' %}" />
-    <!-- the below is a template tag, to be used to insert data in python files -->
     <div></div>
     {{ insert_me }}
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Home Page | Kenny's Website</title>
+    <link rel="stylesheet" href="{% static 'homepage/css/homepage.css'%}" />
+  </head>
+  <body>
+    <h1>Welcome to Django level 2</h1>
+    <h2>Here are your access records!</h2>
+    <div class="djangtwo">
+      {% if access_records %}
+      <table>
+        <thead>
+          <th>Site Name</th>
+          <th>Date Accessed</th>
+        </thead>
+        {% for acc in access_records %}
+        <tr>
+          <td>{{ acc.name }}</td>
+          <td>{{ acc.date }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+      <p>No access records found!</p>
+      {% endif %}
+    </div>
   </body>
 </html>
