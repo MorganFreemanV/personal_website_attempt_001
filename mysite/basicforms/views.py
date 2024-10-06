@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from . import forms
-
+from django.contrib.auth.models import User
 # Create your views here.
 
 def form_name_view(request):
@@ -15,3 +15,16 @@ def form_name_view(request):
             
 
     return render(request, 'basicforms/basicform.html', {'form':form})
+
+def signup_view(request):
+    form = forms.LoginData()
+    if request.method == 'POST':
+        form = forms.LoginData(request.POST)
+        email = request.POST['email_add']
+        if form.is_valid():
+            form.save()
+            print('VALIDATION SUCCESS')
+            
+
+    return render(request, 'basicforms/signuppage.html', {'form':form})
+

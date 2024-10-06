@@ -25,7 +25,10 @@
     <link rel="stylesheet" href="{% static 'homepage/css/homepage.css'%}" />
   </head>
   <body>
-    <h1>Welcome to Django level 2</h1>
+    <a href="http://127.0.0.1:8000/signup">
+      <button class="signupbutton" type="button">Sign up here!</button>
+    </a>
+    <h1 class="toppage">Welcome to Django level 2</h1>
     <h2>Here are your access records!</h2>
     <div class="djangtwo">
       {% if access_records %}

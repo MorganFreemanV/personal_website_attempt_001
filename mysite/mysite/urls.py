@@ -38,4 +38,5 @@ urlpatterns = [
     # re_path(r'^$',views.homepage_helloworld, name='homepage_helloworld'),
     path('admin/', admin.site.urls),
     re_path(r'^formpage/', include('basicforms.urls')),
+    re_path(r'^signup/', include('basicforms.urls')),
 ]
