@@ -11,7 +11,7 @@
   <body>
     <h1>Fill out the form below!</h1>
     <div class="container">
-      <form method="POST" action="http://127.0.0.1:8000/" autocomplete="off">
+      <form method="POST" autocomplete="off">
         {{ form.as_p }} {% csrf_token %}
         <input
           type="submit"

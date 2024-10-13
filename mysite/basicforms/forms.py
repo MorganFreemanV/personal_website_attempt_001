@@ -10,25 +10,6 @@ from django.contrib.auth.models import User
 
 # first name, last name, email address, password, confirm password
 
-class LoginData(forms.Form):
-    first_name = forms.CharField(max_length=264, required=True)
-    last_name = forms.CharField(max_length=264, required=True)
-    email_add = forms.EmailField(max_length=264, required=True)
-    email_add_conf = forms.EmailField(max_length=264, required=True)
-    pw1 = forms.CharField(min_length=8, max_length=16, widget=forms.PasswordInput(render_value=True), required=True)
-    pw2 = forms.CharField(min_length=8, max_length=16, widget=forms.PasswordInput(render_value=True), required=True)
-
-    def clean(self):
-        all_clean_data = super().clean()
-        compare_email = (all_clean_data['email_add'] == all_clean_data['email_add_conf'])
-        compare_password = (all_clean_data['pw1'] == all_clean_data['pw2'])
-        if compare_email == False:
-            raise forms.ValidationError('Make sure emails match!')
-        if compare_password == False:
-            raise forms.ValidationError('Make sure passwords match!')
-        if User.objects.filter(email='email_add').exists():
-            raise forms.ValidationError('Email exists in system! Please use another email.')
-
 
 class FormName(forms.Form):
     name = forms.CharField(max_length=256)

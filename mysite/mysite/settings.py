@@ -26,6 +26,8 @@ print(BASE_DIR)
 print(TEMPLATE_DIR)
 print(STATIC_DIR)
 
+LOGIN_REDIRECT_URL = '/'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'homepage',
     'basicforms',
+    'registration',
 ]
 
 MIDDLEWARE = [
