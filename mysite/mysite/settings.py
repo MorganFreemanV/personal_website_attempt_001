@@ -21,10 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 #STATIC_DIR = Path.joinpath(BASE_DIR, 'static')
 TEMPLATE_DIR = Path(BASE_DIR)/'templates'
 STATIC_DIR = Path(BASE_DIR)/'static'
+MEDIA_DIR = Path(BASE_DIR)/'media'
 
-print(BASE_DIR)
-print(TEMPLATE_DIR)
-print(STATIC_DIR)
+#print(BASE_DIR)
+#print(TEMPLATE_DIR)
+#print(STATIC_DIR)
 
 LOGIN_REDIRECT_URL = '/'
 
@@ -100,12 +101,21 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
+    "django.contrib.auth.hashers.Argon2PasswordHasher",
+    "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
+    "django.contrib.auth.hashers.ScryptPasswordHasher",
+]
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS':{'min_length':8},
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -135,6 +145,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = MEDIA_DIR
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
