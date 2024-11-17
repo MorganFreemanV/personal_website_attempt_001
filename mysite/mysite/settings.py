@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'homepage',
     'basicforms',
     'registration',
+    'register',
 ]
 
 MIDDLEWARE = [

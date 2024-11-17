@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from homepage import views
 from basicforms import views
+from register import views
 
 '''
 https://docs.djangoproject.com/en/4.2/ref/urls/
@@ -33,10 +34,11 @@ $ for end of text
 '''
 
 urlpatterns = [
-    re_path(r'homepage/', include('homepage.urls')),
+    re_path(r'homepage/', include('homepage.urls'), name='homepage'),
     re_path(r'^$', include('homepage.urls')),
     # re_path(r'^$',views.homepage_helloworld, name='homepage_helloworld'),
-    path('admin/', admin.site.urls),
-    re_path(r'^formpage/', include('basicforms.urls')),
-    re_path(r'^registration/', include('registration.urls')),
+    path('admin/', admin.site.urls, name='admin'),
+    re_path(r'^formpage/', include('basicforms.urls'), name='formpage'),
+    re_path(r'^registration/', include('registration.urls'), name='registration'),
+    re_path(r'^register/', include('register.urls'), name='register'),
 ]
