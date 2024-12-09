@@ -1,10 +1,9 @@
 from django.shortcuts import render
 
-
 # Create your views here.
 
 def register_page(request):
-    return render(request, 'register/registration.html')
+    return render(request, 'register/register_page.html')
     """ webpage_list = AccessRecord.objects.order_by('date')
     webpage_list = reversed(webpage_list)
     date_dict = {'access_records':webpage_list}
